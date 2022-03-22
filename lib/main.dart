@@ -42,26 +42,20 @@ class _MyHomePageState extends State<MyHomePage> {
                   axisLabelFormatter: (AxisLabelRenderDetails args) {
                     late String text;
                     late TextStyle textStyle;
-                    if (args.axis.name == 'primaryXAxis') {
-                      text = '${args.text}st\nMonth';
-                      if (args.text == 'Jan')
-                        textStyle = args.textStyle
-                            .copyWith(fontFamily: 'DancingScript');
-                      if (args.text == 'Feb')
-                        textStyle =
-                            args.textStyle.copyWith(color: Colors.green);
-                      if (args.text == 'Mar')
-                        textStyle = args.textStyle.copyWith(fontSize: 15);
-                      if (args.text == 'Apr')
-                        textStyle = args.textStyle
-                            .copyWith(fontStyle: FontStyle.italic);
-                      if (args.text == 'May')
-                        textStyle = args.textStyle
-                            .copyWith(fontWeight: FontWeight.bold);
-                    } else {
-                      text = args.text;
-                      textStyle = args.textStyle;
-                    }
+                    text = '${args.text}st\nMonth';
+                    if (args.text == 'Jan')
+                      textStyle =
+                          args.textStyle.copyWith(fontFamily: 'DancingScript');
+                    if (args.text == 'Feb')
+                      textStyle = args.textStyle.copyWith(color: Colors.green);
+                    if (args.text == 'Mar')
+                      textStyle = args.textStyle.copyWith(fontSize: 15);
+                    if (args.text == 'Apr')
+                      textStyle =
+                          args.textStyle.copyWith(fontStyle: FontStyle.italic);
+                    if (args.text == 'May')
+                      textStyle =
+                          args.textStyle.copyWith(fontWeight: FontWeight.bold);
                     return ChartAxisLabel(text, textStyle);
                   },
                 ),
