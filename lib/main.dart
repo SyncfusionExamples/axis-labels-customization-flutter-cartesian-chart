@@ -38,33 +38,35 @@ class _MyHomePageState extends State<MyHomePage> {
             height: 500,
             child: SfCartesianChart(
                 borderWidth: 10,
-                primaryXAxis: CategoryAxis(),
+                primaryXAxis: CategoryAxis(
+                  axisLabelFormatter: (AxisLabelRenderDetails args) {
+                    late String text;
+                    late TextStyle textStyle;
+                    if (args.axis.name == 'primaryXAxis') {
+                      text = '${args.text}st\nMonth';
+                      if (args.text == 'Jan')
+                        textStyle = args.textStyle
+                            .copyWith(fontFamily: 'DancingScript');
+                      if (args.text == 'Feb')
+                        textStyle =
+                            args.textStyle.copyWith(color: Colors.green);
+                      if (args.text == 'Mar')
+                        textStyle = args.textStyle.copyWith(fontSize: 15);
+                      if (args.text == 'Apr')
+                        textStyle = args.textStyle
+                            .copyWith(fontStyle: FontStyle.italic);
+                      if (args.text == 'May')
+                        textStyle = args.textStyle
+                            .copyWith(fontWeight: FontWeight.bold);
+                    } else {
+                      text = args.text;
+                      textStyle = args.textStyle;
+                    }
+                    return ChartAxisLabel(text, textStyle);
+                  },
+                ),
                 primaryYAxis: NumericAxis(minimum: 20),
                 backgroundColor: Colors.white,
-                axisLabelFormatter: (AxisLabelRenderDetails args) {
-                  late String text;
-                  late TextStyle textStyle;
-                  if (args.axisName == 'primaryXAxis') {
-                    text = '${args.text}st\nMonth';
-                    if (args.text == 'Jan')
-                      textStyle =
-                          args.textStyle.copyWith(fontFamily: 'DancingScript');
-                    if (args.text == 'Feb')
-                      textStyle = args.textStyle.copyWith(color: Colors.green);
-                    if (args.text == 'Mar')
-                      textStyle = args.textStyle.copyWith(fontSize: 15);
-                    if (args.text == 'Apr')
-                      textStyle =
-                          args.textStyle.copyWith(fontStyle: FontStyle.italic);
-                    if (args.text == 'May')
-                      textStyle =
-                          args.textStyle.copyWith(fontWeight: FontWeight.bold);
-                  } else {
-                    text = args.text;
-                    textStyle = args.textStyle;
-                  }
-                  return ChartAxisLabel(text, textStyle);
-                },
                 series: <ChartSeries<SalesData, String>>[
                   LineSeries<SalesData, String>(
                       dataSource: <SalesData>[
