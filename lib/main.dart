@@ -38,13 +38,10 @@ class _MyHomePageState extends State<MyHomePage> {
             height: 500,
             child: SfCartesianChart(
                 borderWidth: 10,
-                primaryXAxis: CategoryAxis(),
-                primaryYAxis: NumericAxis(minimum: 20),
-                backgroundColor: Colors.white,
-                axisLabelFormatter: (AxisLabelRenderDetails args) {
-                  late String text;
-                  late TextStyle textStyle;
-                  if (args.axisName == 'primaryXAxis') {
+                primaryXAxis: CategoryAxis(
+                  axisLabelFormatter: (AxisLabelRenderDetails args) {
+                    late String text;
+                    late TextStyle textStyle;
                     text = '${args.text}st\nMonth';
                     if (args.text == 'Jan')
                       textStyle =
@@ -59,12 +56,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     if (args.text == 'May')
                       textStyle =
                           args.textStyle.copyWith(fontWeight: FontWeight.bold);
-                  } else {
-                    text = args.text;
-                    textStyle = args.textStyle;
-                  }
-                  return ChartAxisLabel(text, textStyle);
-                },
+                    return ChartAxisLabel(text, textStyle);
+                  },
+                ),
+                primaryYAxis: NumericAxis(minimum: 20),
+                backgroundColor: Colors.white,
                 series: <ChartSeries<SalesData, String>>[
                   LineSeries<SalesData, String>(
                       dataSource: <SalesData>[
