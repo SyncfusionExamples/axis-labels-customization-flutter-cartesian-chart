@@ -1,4 +1,4 @@
-# axis-labels-customization-flutter-cartesian-chart
+# Axis labels customization in flutter cartesian chart
 
 The Flutter Cartesian Chart widget provides support for customizing the axis labels in the chart using the callback events on rendering. A callback event is a callback function or method, which you pass as an argument in another function or method and can perform an action when you require it. Likewise, the chart widget provides a callback event called axisLabelFormatter to customize the axis labels as required. 
 
