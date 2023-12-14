@@ -61,7 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 primaryYAxis: NumericAxis(minimum: 20),
                 backgroundColor: Colors.white,
-                series: <ChartSeries<SalesData, String>>[
+                series: <LineSeries<SalesData, String>>[
                   LineSeries<SalesData, String>(
                       dataSource: <SalesData>[
                         SalesData('Jan', 35),
